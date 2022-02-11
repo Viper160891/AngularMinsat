@@ -1,0 +1,54 @@
+<div class="new-customer-container">
+    <h3>Edit Cliente</h3>
+    <form [formGroup]="newCustomerForm" (ngSubmit)="save()">
+      <mat-dialog-content>
+
+        <div class="element-form">
+          <label class="label-description">Nombre:</label>
+          <mat-form-field class="new-customer-form-field">
+            <input type="text" matInput  aria-label="First Name" formControlName="strNombre" />
+            <mat-error *ngIf="newCustomerForm.get('strNombre').hasError('required')">El nombre es requerido</mat-error>
+
+          </mat-form-field>
+
+        </div>
+        <div class="element-form">
+          <label class="label-description">Correo Electronico:</label>
+          <mat-form-field class="new-customer-form-field">
+            <input type="text" matInput aria-label="Last Name" formControlName="strEmail" />
+            <mat-error *ngIf="newCustomerForm.get('strEmail').hasError('required')">El correo electronico es requerido</mat-error>
+            <mat-error *ngIf="newCustomerForm.get('strEmail').hasError('cannotContainSpace')">El correo electronico no puede contener espacios.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="element-form">
+          <label class="label-description">Identificador Fiscal:</label>
+          <mat-form-field class="new-customer-form-field">
+            <input type="text" matInput aria-label="strIdentificadorFiscal" formControlName="strIdentificadorFiscal" />
+            <mat-error *ngIf="newCustomerForm.get('strIdentificadorFiscal').hasError('required')">El campo es Requerido</mat-error>
+            <mat-error *ngIf="newCustomerForm.get('strIdentificadorFiscal').hasError('cannotContainSpace')">El campo no puede contener espacios</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="element-form">
+          <label class="label-description">PAIS(Id):</label>
+          <mat-form-field class="new-customer-form-field">
+            <input type="number" matInput  aria-label="idPais" formControlName="idPais" />
+            <mat-error *ngIf="newCustomerForm.get('idPais').hasError('required')">Pais es requerido</mat-error>
+            <mat-error *ngIf="newCustomerForm.get('idPais').hasError('cannotContainSpace')">Pais no puede contener espacios.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="element-form">
+          <label class="label-description">Razon Social(Id):</label>
+          <mat-form-field class="new-customer-form-field">
+            <input type="number" matInput aria-label="idRazonSocial" formControlName="idRazonSocial" />
+            <mat-error *ngIf="newCustomerForm.get('idRazonSocial').hasError('required')">Razon social es requerida</mat-error>
+            <mat-error *ngIf="newCustomerForm.get('idRazonSocial').hasError('cannotContainSpace')">Razon Social no puede contener espacios.</mat-error>
+          </mat-form-field>
+        </div>
+
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cerrar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="newCustomerForm.invalid">Guardar</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
